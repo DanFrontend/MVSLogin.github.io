@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <ul v-for="(film) in films" :key="film.id">
+        <ul v-for="(film) in sortfilm" :key="film.id">
             <li @click="$router.push(`/header/${film.episode_id}`)"><h2>{{ film.episode_id }} {{ film.title }}</h2></li>
         </ul>
     </div>
@@ -26,6 +26,11 @@
                 const res = await Promise.all(film.characters.map(url => axios.get(url)));
                 this.persons.push(res.map(r => r.data))
             }
+        },
+        computed: {
+            sortfilm() {
+                return this.films.sort((a, b) => a.episode_id - b.episode_id );
+            }
         }
     }
 </script>
@@ -34,6 +39,7 @@
         max-width: 1400px;
         text-align: center;
         margin: 0 auto;
+        font-family: monospace;
     }
     li {
         list-style: none;

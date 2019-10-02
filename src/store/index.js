@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import starwars from "./starwars";
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-    modules:{ starwars },
+export const store = new Vuex.Store({
+
     state: {
         count: 0
     },
