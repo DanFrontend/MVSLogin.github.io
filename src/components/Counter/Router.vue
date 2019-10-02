@@ -5,6 +5,7 @@
                 <router-link class="link" to="/">Home</router-link>
                 <router-link class="link" to="/header">Header</router-link>
                 <router-link class="link" to="/counter">Counter</router-link>
+                <router-link class="link" to="/mvs">MVS</router-link>
             </nav>
         </div>
     </div>
