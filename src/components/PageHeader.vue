@@ -47,7 +47,7 @@
     }
     .page-header {
         background-image: url("../../img/Mvs_startpage_pic.png");
-        height: 100vh;
+        height: calc(100vh - 35px);
         display: flex;
         align-items: center;
         flex-direction: column;

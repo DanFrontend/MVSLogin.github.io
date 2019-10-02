@@ -1,23 +1,17 @@
 <template>
     <div class="container">
-        <button @click.prevent="$router.go(-1)">Go-back</button>
-        <ul v-for="(film, i) in films" :key="film.id">
-            <li><h2>{{ film.episode_id }} {{ film.title }}</h2></li>
-            <li><p>{{ film.opening_crawl }}</p></li>
-            <li>
-                <ul v-if="persons[i]">
-                    <li v-for="person in persons[i]">
-                        {{ person.name }}
-                    </li>
-                </ul>
-            </li>
+        <ul v-for="(film) in films" :key="film.id">
+            <li @click="$router.push(`/header/${film.episode_id}`)"><h2>{{ film.episode_id }} {{ film.title }}</h2></li>
         </ul>
     </div>
 </template>
+
 <script>
     import axios from 'axios';
+    import SingleHeader from "./SingleHeader";
     export default {
         name: 'Header',
+        components: {SingleHeader},
         data() {
             return {
                 films: [],
@@ -32,16 +26,18 @@
                 const res = await Promise.all(film.characters.map(url => axios.get(url)));
                 this.persons.push(res.map(r => r.data))
             }
-        },
+        }
     }
 </script>
 <style scoped>
     .container {
-        max-width: 800px;
+        max-width: 1400px;
+        text-align: center;
         margin: 0 auto;
     }
     li {
         list-style: none;
+        cursor: pointer;
     }
     button {
         margin: 20px;

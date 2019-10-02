@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <button class="button" @click.prevent="$router.go(-1)">Go-back</button>
         <h2>Welcome to Counter</h2>
         {{ counter }}
@@ -30,8 +30,11 @@
     }
 </script>
 
-<style>
+<style scoped>
     .button {
         margin: 20px;
+    }
+    .container {
+        text-align: center;
     }
 </style>
